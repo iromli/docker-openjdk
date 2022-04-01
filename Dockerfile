@@ -44,3 +44,6 @@ RUN mkdir /opt/openjdk \
 
 ENV JAVA_HOME=/opt/openjdk
 ENV PATH=$JAVA_HOME/bin:$PATH
+
+RUN apk del .build-deps \
+    && rm -rf /var/cache/apk/*
