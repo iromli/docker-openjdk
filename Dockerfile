@@ -39,7 +39,7 @@ RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswit
 
 ARG ECLIPSE_TEMURIN_DOWNLOAD_URL=https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.14.1%2B1/OpenJDK11U-jre_x64_linux_hotspot_11.0.14.1_1.tar.gz
 
-RUN mkdir /opt/openjdk \
+RUN mkdir -p /opt/openjdk \
     && wget -q "$ECLIPSE_TEMURIN_DOWNLOAD_URL" -O /tmp/openjdk.tar.gz \
     && tar xf /tmp/openjdk.tar.gz --strip-components=1 -C /opt/openjdk \
     && rm -rf /tmp/openjdk.tar.gz
