@@ -2,7 +2,7 @@ FROM alpine:3.15.4
 
 RUN apk update \
     && apk upgrade \
-    && apk add --no-cache --virtual .build-deps wget ca-certificates
+    && apk add --no-cache --virtual .build-deps wget
 
 ARG GLIBC_VERSION=2.28-r0
 ARG GLIBC_PREFIX=/usr/glibc-compat
