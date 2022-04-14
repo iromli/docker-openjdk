@@ -37,11 +37,20 @@ RUN mkdir -p /tmp/zlib \
 # fix networking
 RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 
-ARG OPENJDK_VARIANT=jre
-ARG ECLIPSE_TEMURIN_DOWNLOAD_URL=https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.14.1%2B1/OpenJDK11U-${OPENJDK_VARIANT}_x64_linux_hotspot_11.0.14.1_1.tar.gz
+ARG OPENJDK_VARIANT=""
+ARG OPENJDK_VERSION=11.0.14.1
+ARG OPENJDK_BASE_URL=https://github.com/adoptium/temurin11-binaries/releases/download/jdk-${OPENJDK_VERSION}+1
 
-RUN mkdir -p /opt/openjdk \
-    && wget -q "$ECLIPSE_TEMURIN_DOWNLOAD_URL" -O /tmp/openjdk.tar.gz \
+RUN case "${OPENJDK_VARIANT}" in \
+        jdk) \
+            OPENJDK_VARIANT=jdk \
+            ;; \
+        *) \
+            OPENJDK_VARIANT=jre \
+            ;; \
+        esac \
+    && wget -q ${OPENJDK_BASE_URL}/OpenJDK11U-${OPENJDK_VARIANT}_x64_linux_hotspot_${OPENJDK_VERSION}_1.tar.gz -O /tmp/openjdk.tar.gz \
+    && mkdir -p /opt/openjdk \
     && tar xf /tmp/openjdk.tar.gz --strip-components=1 -C /opt/openjdk \
     && rm -rf /tmp/openjdk.tar.gz
 
