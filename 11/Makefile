@@ -2,6 +2,8 @@
 IMAGE_NAME?=janssenproject/openjdk
 VERSION=$(shell cat version.txt)
 
+.DEFAULT_GOAL:=build-jre
+
 build-jre:
 	@echo "[I] Building image ${IMAGE_NAME}:jre-${VERSION}"
 	@docker build --rm --force-rm -t ${IMAGE_NAME}:jre-${VERSION} .
