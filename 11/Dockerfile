@@ -34,9 +34,6 @@ RUN mkdir -p /tmp/zlib \
     && rm -rf /tmp/gcc \
     && ${GLIBC_PREFIX}/sbin/ldconfig
 
-# fix networking
-RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
-
 ARG OPENJDK_VARIANT=""
 ARG OPENJDK_VERSION=11.0.14.1
 ARG OPENJDK_BASE_URL=https://github.com/adoptium/temurin11-binaries/releases/download/jdk-${OPENJDK_VERSION}+1
