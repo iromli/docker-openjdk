@@ -1,5 +1,6 @@
-IMAGE_NAME=janssenproject/openjdk
-VERSION:=$(shell cat version.txt)
+# default image name
+IMAGE_NAME?=janssenproject/openjdk
+VERSION=$(shell cat version.txt)
 
 build-jre:
 	@echo "[I] Building image ${IMAGE_NAME}:jre-${VERSION}"
