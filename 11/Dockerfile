@@ -35,8 +35,8 @@ RUN mkdir -p /tmp/zlib \
     && ${GLIBC_PREFIX}/sbin/ldconfig
 
 ARG OPENJDK_VARIANT=""
-ARG OPENJDK_VERSION=11.0.14.1
-ARG OPENJDK_BASE_URL=https://github.com/adoptium/temurin11-binaries/releases/download/jdk-${OPENJDK_VERSION}+1
+ARG OPENJDK_VERSION=11.0.15
+ARG OPENJDK_BASE_URL=https://github.com/adoptium/temurin11-binaries/releases/download/jdk-${OPENJDK_VERSION}+10
 
 RUN case "${OPENJDK_VARIANT}" in \
         jdk) \
@@ -46,7 +46,7 @@ RUN case "${OPENJDK_VARIANT}" in \
             OPENJDK_VARIANT=jre \
             ;; \
         esac \
-    && wget -q ${OPENJDK_BASE_URL}/OpenJDK11U-${OPENJDK_VARIANT}_x64_linux_hotspot_${OPENJDK_VERSION}_1.tar.gz -O /tmp/openjdk.tar.gz \
+    && wget -q ${OPENJDK_BASE_URL}/OpenJDK11U-${OPENJDK_VARIANT}_x64_linux_hotspot_${OPENJDK_VERSION}_10.tar.gz -O /tmp/openjdk.tar.gz \
     && mkdir -p /opt/openjdk \
     && tar xf /tmp/openjdk.tar.gz --strip-components=1 -C /opt/openjdk \
     && rm -rf /tmp/openjdk.tar.gz

@@ -11,7 +11,7 @@ Supported variants:
 
 Supported OpenJDK versions:
 
-- OpenJDK 11.0.14
+- OpenJDK 11.0.15
 
 ## Building Image
 

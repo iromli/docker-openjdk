@@ -4,7 +4,7 @@ Eclipse Temurin (OpenJDK) on Alpine with `glibc` support.
 
 ## Versions
 
-Current version is `11.0.14.1`.
+Current version is `11.0.15`.
 
 Supported variants:
 
