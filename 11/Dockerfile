@@ -24,6 +24,7 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
 ARG EXT_GCC_LIBS_URL=https://archive.archlinux.org/packages/g/gcc-libs/gcc-libs-8.3.0-1-x86_64.pkg.tar.xz
 ARG EXT_ZLIB_URL=https://archive.archlinux.org/packages/z/zlib/zlib-1%3A1.2.11-3-x86_64.pkg.tar.xz
 
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN mkdir -p /tmp/zlib \
     && wget -q -O - "${EXT_ZLIB_URL}" | tar xJf - -C /tmp/zlib \
     && cp -dP /tmp/zlib/usr/lib/libz.so* "${GLIBC_PREFIX}/lib" \
