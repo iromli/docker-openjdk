@@ -1,5 +1,5 @@
 # default image name
-IMAGE_NAME?=janssenproject/openjdk
+IMAGE_NAME?=iromli/openjdk
 VERSION=$(shell cat version.txt)
 
 .DEFAULT_GOAL:=build-jre
