@@ -1,7 +1,7 @@
-FROM alpine:3.16.0
+FROM alpine:3.16
 
 RUN apk update \
-    && apk upgrade \
+    && apk upgrade --available \
     && apk add --no-cache --virtual .build-deps wget
 
 ARG GLIBC_VERSION=2.28-r0
